@@ -1,0 +1,81 @@
+# Practical Scenario Handling - Driving Score Tracker
+
+## ✅ Issue 1: Background Location Tracking Doesn’t Work
+
+### 🎯 Scenario:
+The app is supposed to track driving behaviour in real-time, but it stops recording data when the app goes into the background.
+
+### 💡 Response:
+**Problem:**
+- The app pauses background tasks by default when minimized, which interrupts location tracking.
+
+### 🛠️ Solution:
+1. **Request Background Location Permission:**
+   - **For Android:**
+     - Add `ACCESS_BACKGROUND_LOCATION` to `AndroidManifest.xml`.
+     - Make sure the app requests "Allow all the time" permission from the user in system settings.
+   - **For iOS:**
+     - Add `UIBackgroundModes` (location) in `Info.plist` to allow location updates in the background.
+
+2. **Use Background Plugins:**
+   - Use packages like `geolocator` to track location and `workmanager` or `flutter_background` to keep the app running in the background.
+
+3. **Implement a Background Service:**
+   - Create a background service that continues recording location data even when the app is in the background.
+
+---
+
+## ✅ Issue 2: Trip Starts Even When the User is Stationary
+
+### 🎯 Scenario:
+The app should only start tracking when the user begins moving, but currently, a "trip" starts immediately even if the user is not driving.
+
+### 💡 Response:
+**Problem:**
+- The trip starts as soon as the app launches, without checking whether the user is actually moving or driving.
+
+### 🛠️ Solution:
+1. **Add Motion Detection:**
+   - Use accelerometer data or track the rate of location changes to determine if the user is moving.
+   - Calculate the speed between consecutive location updates to confirm motion.
+
+2. **Set Proper Start Conditions:**
+   - Add conditions such as:
+     - Minimum speed threshold (e.g., start tracking only if the speed is greater than 5 km/h).
+     - Require consistent motion for a few seconds before starting the trip.
+
+3. **Delay Trip Start:**
+   - Add a short delay (e.g., 5–10 seconds) to confirm that the user is moving before beginning the trip.
+
+---
+
+## ✅ Issue 3: App Consumes Too Much Battery
+
+### 🎯 Scenario:
+Users are complaining that the app is draining their battery too quickly.
+
+### 💡 Response:
+**Problem:**
+- High-frequency location updates, unnecessary background tasks, and continuous use of GPS are causing excessive battery drain.
+
+### 🛠️ Solution:
+1. **Optimize Location Updates:**
+   - Reduce the frequency of location updates. For instance, update every 5–10 seconds instead of 1 second.
+   - Lower the location accuracy when high precision isn’t required (use `LocationAccuracy.low` or `balanced`).
+
+2. **Use Geofencing and Motion Sensors:**
+   - Implement geofencing to reduce the need for constant location updates.
+   - Pause location updates when the user is stationary to save battery.
+
+3. **Limit Background Processing:**
+   - Avoid unnecessary background tasks that consume resources.
+   - Use `workmanager` to schedule periodic tasks in the background efficiently.
+
+4. **Minimize CPU Usage:**
+   - Make sure that resource-heavy tasks (such as real-time data processing) are optimized to minimize CPU load, which will also reduce battery usage.
+
+---
+
+## 🎯 Summary:
+These solutions should help fix the core issues and improve the app’s performance. By optimizing location updates, adding motion detection, and limiting background processes, the app can track driving behaviour accurately while consuming less battery and preventing false trip starts.
+

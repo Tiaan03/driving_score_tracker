@@ -1,0 +1,28 @@
+name: driving_score_tracker
+description: "A new Flutter project."
+publish_to: 'none' # Prevent accidental publishing to pub.dev
+
+# Version number of the app
+version: 1.0.0+1
+
+# Dart SDK version
+environment:
+  sdk: ^3.7.2
+
+# Main dependencies for your Flutter app
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  shared_preferences: ^2.2.2
+  fl_chart: ^0.63.0
+
+# Dependencies for testing & linting
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+# Flutter-specific configurations
+flutter:
+  uses-material-design: true
