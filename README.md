@@ -1,16 +1,89 @@
-# driving_score_tracker
+🚗 Driving Score Tracker
 
-A new Flutter project.
+This project is a Driving Score Tracker application built with Flutter. It simulates driving behavior by generating random data and calculating a score based on harsh braking, rapid acceleration, and speed over the limit.
 
-## Getting Started
+📚 Project Overview
 
-This project is a starting point for a Flutter application.
+Platform: Flutter (cross-platform)
 
-A few resources to get you started if this is your first Flutter project:
+Language: Dart
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Features:
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Simulates random driving data
+
+Displays a driving score dynamically
+
+Charts to visualize score history
+
+Stores previous scores in local storage
+
+Dark Mode Support
+
+Displays Highest, Lowest, and Average scores
+
+🚀 How to Run the Application
+
+Prerequisites
+
+Install Flutter SDK
+
+Download Flutter SDK
+
+Install Git
+
+Download Git
+
+Ensure you have a compatible IDE (VS Code or Android Studio)
+
+📥 Clone the Repository
+
+# Open terminal or command prompt
+# Clone the repository
+git clone https://github.com/Tiaan03/driving_score_tracker.git
+
+# Navigate into the project directory
+cd driving_score_tracker
+
+⚡️ Install Dependencies
+
+# Get all the required dependencies
+flutter pub get
+
+▶️ Run the Application
+
+# Run the app
+flutter run
+
+# To run on a specific platform:
+# For Chrome
+flutter run -d chrome
+
+# For Windows
+flutter run -d windows
+
+# For Edge
+flutter run -d edge
+
+📝 Project Structure
+
+├── android
+├── assets
+├── ios
+├── lib
+│   ├── main.dart
+│   └── ... other Dart files
+├── web
+└── README.md
+
+🧠 Scenario Handling
+
+Background Location Tracking
+
+Starting Trip Only on Movement
+
+Battery Optimization
+
+If you encounter any issues, feel free to reach out. 😊
+
+
